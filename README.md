@@ -39,7 +39,7 @@ hand-drawn-poster/
 
 本 Skill 遵循 AI Agent 标准 Skill 规格（包含 `SKILL.md` YAML Frontmatter 与 `references/` 详细参考手册）：
 
-- **自动加载**：将本仓库目录或软链接放置于 Agent 的 Skill 扫描路径（如 `.agents/skills/hand-drawn-poster` 或 `~/.gemini/config/skills/hand-drawn-poster`）中即可自动注册。
+- **自动加载**：将本仓库目录下`hand-drawn-poster`放置于 Agent 的 Skill 扫描路径（如 `.agents/skills` 或 `~/.gemini/config/skills`）中即可自动注册。
 - **触发逻辑**：当用户请求生成手绘科普海报、小红书图文海报、或指定主题知识卡片 Prompt 时，Agent 会自动载入本 Skill 指令及依赖文档。
 - **双语 Prompt 机制**：Agent 内部使用**英文 Prompt**确保生图模型渲染质量，输出时同时提供 **🔵 中文确认版 Prompt** 与 **🟢 英文生图版 Prompt** 供用户审核与最终调用。
 
