@@ -16,13 +16,14 @@ description: 专业的手绘图文科普海报生图 Skill。接收上层业务�
 1. **单页高密度干货与显式文案 (High-Density Knowledge & Explicit Typography)**：
    - **拒绝泛泛装饰画**：单张海报必须精准传递 3-5 个核心干货知识点（如概念定义、对比公式/数据、系统分层、代码步骤、总结金句）。
    - **文案全量显式写入 Prompt**：生图 Prompt **必须用单引号 `'...'` 显式写入海报中需要渲染的所有具体中文文案**（包含主标题、卡片胶囊标题 `1. 2. 3.`、小吊牌标注词、对比框文本、黑板代码步骤、总结金句）。
+   - ⚠️ **文案文本原生中文法则 (Explicit Native Chinese Text)**：在 🟢 **英文生图版 Prompt** 中，英文仅用于描述画风、构图、配色与小智动作（如 `Cute Q-style hand-drawn poster`, `left-right split comparison`）；**所有放在单引号 `'...'` 或中括号 `'[...]'` 内需要生图模型直接渲染打印在海报上的文案，必须强制保持原生中文文本，绝对禁止翻译成英文！**（例：`title reads 'AI "驻场特种兵"：FDE 破局最后一公里'`，而绝对不能翻译为 `'AI "Forward Deployed Engineer": FDE Breakdown'`）。
    - **绝对禁止空洞占位符**：生图 Prompt 中绝对禁止出现 `[要点说明]`、`[隐喻场景描述]` 或 `[具体知识演绎动作]` 等抽象占位符，输出时必须全部填充为抽取的具化文案与插画描述。
 
 2. **纯粹自洽的视觉隐喻 (Self-Consistent Visual Metaphor)**：
    - 画面保持统一、自洽的隐喻叙事（如餐馆点餐、中央总线插头、黑板教学、工厂流水线），避免在单一画面中混杂冲突的概念元素。
 
 3. **层次化视觉组件组合 (Enriched Visual Components Stack)**：
-   - 每一张海报必须显式组合 3~5 个具体的视觉组件（如圆角虚线卡片框、彩色胶囊小标题底块、挂在绳子上的手绘小吊牌挂签、圆形放大镜切割图、黑板代码切片框、红绿勾叉对比徽章、黄色手绘气泡总结框）。
+   - 每一张海报必须显式组合 2~4 个具体的视觉组件（如圆角虚线卡片框、莫兰迪胶囊标题底块、挂在绳子上的手绘小吊牌挂签、圆形放大镜切割图、黑板代码切片框、红绿勾叉对比徽章、黄色手绘气泡总结框）。
 
 4. **IP 形象与知识强联动 (IP Mascot Integration)**：
    - 海报中融入科技感手绘小机器人“小智 (Xiao Zhi)”。小智的姿态与道具必须与其处理的原文具体知识产生强烈联动（如：按压 Allow 授权按钮、用激光笔指着特定代码步骤、挥舞手绘扳手调试总线、高举数据跑腿包）。
@@ -36,7 +37,7 @@ Agent 在处理单张海报生成任务时，严格执行以下 4 步流程：
 ```
 [ 步骤 1: 知识点精准萃取 ]     [ 步骤 2: 单页版式与隐喻提案 ]     [ 步骤 3: Grill-Me 交互沟通 ]     [ 步骤 4: 精细脚本与 Prompt 输出 ]
 +------------------------+     +--------------------------+     +---------------------------+     +-------------------------------+
-| 提取 3-5 个核心知识点、 | --> | 选定单页 5 大经典版式、   | --> | 向用户展示单页蓝图与文案  | --> | 输出包含全量中文文案与        |
+| 提取 3-5 个核心知识点、 | --> | 选定单页 5 大经典版式、   | --> | 向用户展示单页蓝图与文案  | --> | 输出包含全量原生中文文案与    |
 | 对比数据、代码与总结   |     | 匹配组件与小智姿态       |     | 收集反馈并优化单页方案    |     | 视觉组件的精细生图 Prompt     |
 +------------------------+     +--------------------------+     +---------------------------+     +-------------------------------+
 ```
@@ -56,21 +57,21 @@ Agent 在处理单张海报生成任务时，严格执行以下 4 步流程：
      4. **小智知识演绎姿态**：小智如何用具象动作与本页干货交互（如按压 Allow 按钮、激光笔指黑板代码、挥舞扳手调试总线等）。
 
 4. **步骤 4：输出精细脚本与双语生图 Prompt**：
-   - Agent **内部以英文构建 Prompt**（英文 Prompt 生图质量更优），确认通过后输出**两个版本**：
-     - **🟢 英文生图版 (Primary)**：以英文撰写的完整生图 Prompt，用于实际调用生图模型。这是**主要产物**。
-     - **🔵 中文确认版 (Review)**：将英文版忠实翻译为中文，供用户审核所有画面内容、文案措辞是否准确。用户确认后，以英文版提交生图。
+   - Agent **内部以英文构建画面描述 Prompt**（英文描述生图质量更优），确认通过后输出**两个版本**：
+     - **🟢 英文生图版 (Primary)**：以英文描述画风与小智构图，**单引号 `'...'` 显式文本强制保留原生中文，原生就是英文的除外**。这是用于生图调用的**主要产物**。
+     - **🔵 中文确认版 (Review)**：将英文画面描述翻译为中文，方便用户审查整个画面构图与文字排版。
 
 ---
 
 ## 💡 Prompt 对比范例：劣质模糊 vs 优质高密度 (English Prompt Examples)
 
-> 💡 Skill 内部所有提示词案例均使用英文编写（以最大化发挥生图模型效果）。仅在实际输出产物给用户时，附上中文确认版供用户审核。
+> 💡 实际生图时，英文描述画风场景，单引号 `'...'` 内部包含要打印到海报上的**原生中文文案**（现今主流 AI 生图模型如 Ideogram/Flux/Midjourney v6 均支持精准渲染中文）。
 
 ### ❌ Bad Prompt Example (抽象空洞、缺失文案细节):
 > `Cute Q-style hand-drawn educational infographic poster, warm off-white cream paper texture background. Top double-line bubble title '[Main Title]'. Center shows a hand-drawn metaphor scene comparing Pre-MCP and With-MCP. Some cards with key points. Xiao Zhi doing knowledge demonstration. Morandi colors, 3:4 ratio, high resolution.` *(反思：没有任何真实具体文案，全是抽象占位符！)*
 
-### ✅ Good Prompt Example (高密度干货、全量显式文案、组件丰富):
-> `Cute Q-style hand-drawn educational infographic poster, warm off-white cream paper texture background. At the top center, a double-line bubble-lettered title reads 'Goodbye "Spaghetti" Cable Nightmare: M×N vs M+N', decorated with colorful fill and hand-drawn cloud and lightbulb doodles. The layout uses a left-right split comparison with contrast bubbles: the left bubble has a yellow exclamation warning triangle and red cross badge, a capsule header '[Pre-MCP: M×N Nightmare]', showing a tangled mess of red hand-drawn wire, with 3 hanging tag labels '[Reinventing the Wheel]', '[10 Independent Plugins]', '[One Change Breaks All]'; the right bubble has a green checkmark badge, a capsule header '[With-MCP: M+N Reduction]', showing a blue hand-drawn central bus with star topology, with 3 hanging tags '[Star Bus]', '[Build Once]', '[Run Everywhere]'. A cute minimalist hand-drawn robot mascot Xiao Zhi with rounded square head, single ball-top antenna, dot eyes and dash mouth, tangled in red wires with X eyes on the left, and cheerfully waving a hand-drawn wrench to tune the blue bus on the right. At the bottom, a yellow hand-drawn speech bubble summary box reads '[MCP introduces a standard abstraction layer, reducing the dense mesh topology to a star bus!]'. Pastel Morandi color palette, soft black ink hand-drawn outlines, single-page panoramic composition, centered main subject, bottom whitespace, 3:4 ratio, high resolution, fine detail.`
+### ✅ Good Prompt Example (高密度干货、全量显式中文文案、组件丰富):
+> `Cute Q-style hand-drawn educational infographic poster, warm off-white cream paper texture background. At the top center, a double-line bubble-lettered title reads '告别"意大利面"乱拉线噩梦：M×N vs M+N', decorated with colorful fill and hand-drawn cloud and lightbulb doodles. The layout uses a left-right split comparison with contrast bubbles: the left bubble has a yellow exclamation warning triangle and red cross badge, a capsule header '[Pre-MCP: M×N 噩梦]', showing a tangled mess of red hand-drawn wire, with 3 hanging tag labels '[重复造轮子]', '[10 个独立插件]', '[一改全崩溃]'; the right bubble has a green checkmark badge, a capsule header '[With-MCP: M+N 降维]', showing a blue hand-drawn central bus with star topology, with 3 hanging tags '[标准总线]', '[一次开发]', '[处处运行]'. A cute minimalist hand-drawn robot mascot Xiao Zhi with rounded square head, single ball-top antenna, dot eyes and dash mouth, tangled in red wires with X eyes on the left, and cheerfully waving a hand-drawn wrench to tune the blue bus on the right. At the bottom, a yellow hand-drawn speech bubble summary box reads '[MCP 引入标准抽象层，将网状拓扑降维为星型总线！]'. Pastel Morandi color palette, soft black ink hand-drawn outlines, single-page panoramic composition, centered main subject, bottom whitespace, 3:4 ratio, high resolution, fine detail.`
 
 ---
 
