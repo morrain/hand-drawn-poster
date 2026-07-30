@@ -15,9 +15,10 @@
 - [ ] **单引号显式包裹**：生图 Prompt 中所有需要在画面中渲染显示的中文文案（包含顶部主标题、卡片胶囊标题 `1. 2. 3.`、悬挂小吊牌标注词、黑板代码步骤、气泡总结金句）是否均使用单引号 `'...'` 显式写入？
 - [ ] **文案表达准确**：文案内容是否无错别字、表述精炼且逻辑连贯？
 
-### 3. 彻底消除抽象占位符 (Zero Abstract Placeholders)
+### 3. 彻底消除抽象占位符与杜撰乱码 (Zero Abstract Placeholders & Anti-Gibberish)
 - [ ] **零占位符残留**：生图 Prompt 中是否彻底清除了 `[要点说明]`、`[隐喻场景描述]`、`[具体知识演绎动作]`、`[代码内容]` 等任何方括号占位符？
 - [ ] **全量具象替换**：所有的占位符是否均已替换为抽取出的精准文案与具体的画面描述？
+- [ ] **防杜撰与反乱码控制指令**：Prompt 中是否显式包含了纯净控制指令（`strictly NO fake subtext underneath capsule headers, NO random garbled text/gibberish, NO unintended bullet points, clean layout with only explicitly specified text`），严格禁止模型私自衍生杜撰字幕或生成无意义杂乱字符？
 
 ### 4. 丰富手绘视觉组件组合 (Visual Component Diversity)
 - [ ] **多组件叠加 (3-5个/页)**：单张海报是否显式组合了 3~5 个具象手绘视觉组件？
